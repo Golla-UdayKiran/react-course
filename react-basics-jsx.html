@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics, JSX</title>
+  </head>
+  <body>
+    <div class="js-container-1"></div>
+
+    <div class="js-container-2"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const button = <button>hello</button>;
+      const paragraph1 = <p>paragraph of text</p>;
+
+      const productCost1 = 10 + 8 * 2;
+      const shippingCost1 = 5;
+      
+      const productCost2 = 869.66 + 695.73 * 2;
+      const shippingCost2 = 434.83;
+      
+      const div = (
+        <div>
+          <button>hello</button>
+          <p>paragraph of text {2 + 2}</p>
+          
+          <button>Good job!</button>
+
+          <p>My name is Uday</p>
+
+          <h2>Amazon</h2>
+
+          <h3>Amazon.com - America</h3>
+          <p>Cotton socks</p>
+          <p>Price: $10</p>
+          <button>Add to Cart</button>
+
+          <p>Product cost: ${productCost1}</p>
+          <p>Shipping cost: ${shippingCost1}</p>
+          <p>Total cost: ${productCost1 + shippingCost1}</p>
+          <button>Place your order</button>
+
+          <h3>Amazon.in - India</h3>
+          <p>Cotton socks</p>
+          <p>Price: ₹869.66</p>
+          <button>Add to Cart</button>
+
+          <p>Product cost: ₹{productCost2}</p>
+          <p>Shipping cost: ₹{shippingCost2}</p>
+          <p>Total cost: ₹{productCost2 + shippingCost2}</p>
+          <button>Place your order</button>
+
+          <p>Today is {dayjs().format('MMMM D')}</p>
+        </div>
+      );
+
+      console.log(productCost1);
+
+      console.log(productCost2);
+
+      console.log(dayjs().format('MMMM D'));
+
+      const container1 = document.querySelector('.js-container-1');
+      ReactDOM.createRoot(container1).render(div);
+
+      const paragraph2 = <p>Current time: {dayjs().format('HH:mm:ss')}</p>;
+
+      const container2 = document.querySelector('.js-container-2');
+      const root = ReactDOM.createRoot(container2);
+      root.render(paragraph2);
+
+      setInterval(() => {
+        const paragraph = <p>Current time: {dayjs().format('HH:mm:ss')}</p>;
+        root.render(paragraph);
+      }, 1000);
+    </script>
+  </body>
+</html>
