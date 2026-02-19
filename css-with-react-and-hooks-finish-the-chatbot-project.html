@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS with React, and Hooks, Finish the Chatbot Project</title>
+    <link rel="stylesheet" href="styles/css-with-react-and-hooks-finish-the-chatbot-project.css">
+  </head>
+  <body>
+    <h1>CSS with React, and Hooks, Finish the Chatbot Project</h1>
+
+    <div class="js-container1"></div>
+
+    <div class="js-container2"></div>
+
+    <div class="js-container3"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function App1() {
+        const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+        function switchButtonOn() {
+          if (isButtonOn) {
+            setIsButtonOn(false);
+          } else {
+            setIsButtonOn(true);
+          }
+          /*
+            Another solution is:
+            setIsButtonOn(!isButtonOn);
+          */
+        }
+
+        return (
+          <button
+            className={isButtonOn ? 'on-button' : 'off-button'}
+            onClick={switchButtonOn}
+          >
+            {isButtonOn ? 'ON' : 'OFF'}
+          </button>
+        );
+      }
+
+      function LoginForm() {
+        const [showPassword, setShowPassword] = React.useState(false);
+
+        function toggleShowPassword() {
+          setShowPassword(!showPassword);
+          /*
+            Another solution is:
+            if (showPassword) {
+              setShowPassword(false);
+            } else {
+              setShowPassword(true);
+            }
+          */
+        }
+
+        return (
+          <>
+            <div>
+              <input
+                placeholder="Email"
+                className="login-input"
+              />
+            </div>
+            <div>
+              <input
+                placeholder="Password"
+                type={showPassword ? 'text' : 'password'}
+                className="login-input"
+              />
+              <button
+                className="show-button"
+                onClick={toggleShowPassword}
+              >
+                {showPassword ? 'Hide' : 'Show'}
+              </button>
+            </div>
+            <button className="login-button">Login</button>
+            <button className="login-button">Sign up</button>
+          </>
+        );
+      }
+
+      function App2() {
+        return (
+          <>
+            <p className="title">Hello, welcome to my website</p>
+            <LoginForm />
+          </>
+        );
+      }
+
+      function App3() {
+        const [time, setTime] = React.useState(
+          dayjs().format('HH:mm:ss')
+        );
+
+        React.useEffect(() => {
+          setInterval(() => {
+            // The purpose of this is to see how the
+            // dependency array affects how many times useEffect()
+            // runs. Notice that it runs a lot more often without
+            // the dependency array.
+            console.log('run code');
+            setTime(dayjs().format('HH:mm:ss'));
+          }, 1000);
+
+        // Important: make sure to give React.useEffect()
+        // a dependency array of [] so it only runs once!
+        }, []);
+        
+        return (
+          <p>Current time: {time}</p>
+        );
+      }
+
+      const container1 = document.querySelector('.js-container1');
+      ReactDOM.createRoot(container1).render(<App1 />);
+
+      const container2 = document.querySelector('.js-container2');
+      ReactDOM.createRoot(container2).render(<App2 />);
+
+      const container3 = document.querySelector('.js-container3');
+      ReactDOM.createRoot(container3).render(<App3 />);
+    </script>
+  </body>
+</html>
