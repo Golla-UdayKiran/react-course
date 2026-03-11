@@ -2,5 +2,6 @@
 
 <p>1. <a href="https://supersimple.dev/react-basics">React Basics</a><p>
 <p>2. <a href="https://supersimple.dev/projects/chatbot">Chatbot</a></p>
+<p>3. <a href="https://supersimple.dev/projects/ecommerce">Ecommerce Project</a></p>
 
 <code>website</code>: https://react-course-live.vercel.app
