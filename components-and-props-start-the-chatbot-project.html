@@ -30,7 +30,7 @@
         );
       }
 
-      function App() {
+      function App1() {
         return (
           <>
             <p>Hello, welcome to my website</p>
@@ -81,10 +81,10 @@
         );
       }
 
-      function EComApp() {
+      function App2() {
         return (
           <>
-            <h2>Amazon.com - America</h2>
+            <h2>Amazon.com - US</h2>
             {/* 5. Provide the imageSrc prop to each <ProductDetails> */}
             <ProductDetails
               name="Cotton socks"
@@ -103,7 +103,7 @@
               imageSrc="images/plain-t-shirt.png"
             />
 
-            <h2>Amazon.in - India</h2>
+            <h2>Amazon.in - IN</h2>
             <ProductDetails
               name="Cotton socks"
               price="₹999.10"
@@ -125,10 +125,10 @@
       }
 
       const container1 = document.querySelector('.js-container1');
-      ReactDOM.createRoot(container1).render(<App />);
+      ReactDOM.createRoot(container1).render(<App1 />);
 
       const container2 = document.querySelector('.js-container2');
-      ReactDOM.createRoot(container2).render(<EComApp />);
+      ReactDOM.createRoot(container2).render(<App2 />);
     </script>
   </body>
 </html>

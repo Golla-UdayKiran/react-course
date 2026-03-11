@@ -5,11 +5,92 @@
   </head>
   <body>
     <h1>State, and Event Handlers, Create the Chatbot Project Features</h1>
-    
-    <p><a href="https://simple-counter-web-app.vercel.app">Simple Counter App</a></p>
-    
-    <p><a href="https://display-as-you-type.vercel.app">Display As You Type</a></p>
-    
-    <p><a href="https://chatbotwebapp.vercel.app">Chatbot</a></p>
+
+    <div class="js-container1"></div>
+
+    <div class="js-container2"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function Counter({ count, setCount }) {
+        function increaseCount() {
+          setCount(count + 1);
+        }
+        
+        return (
+          <button onClick={increaseCount}>
+            Clicked {count} {count === 1 ? 'time' : 'times'}
+          </button>
+        );
+      }
+      
+      function App1() {
+        const [count, setCount] = React.useState(0);
+
+        function resetCount() {
+          setCount(0);
+        }
+
+        return (
+          <>
+            <h2>Simple Counter App</h2>
+            <Counter
+              count={count}
+              setCount={setCount}
+            />
+            <Counter
+              count={count}
+              setCount={setCount}
+            />
+            <button onClick={resetCount}>
+              Reset
+            </button>
+          </>
+        )
+      }
+
+      function App2() {
+        const [inputText, setInputText] = React.useState('');
+
+        function saveInputText(event) {
+          setInputText(event.target.value);
+        }
+
+        function resetInputText() {
+          setInputText('');
+        }
+
+        function setExampleText() {
+          setInputText('Alice');
+        }
+        
+        return (
+          <>
+            <h2>Display As You Type</h2>
+            <input
+              onChange={saveInputText}
+              placeholder="Type a name here"
+              value={inputText}
+            />
+            <button onClick={resetInputText}>
+              Reset
+            </button>
+            <button onClick={setExampleText}>
+              Example
+            </button>
+            <p>Hello {inputText}</p>
+          </>
+        )
+      }
+
+      const container1 = document.querySelector('.js-container1');
+      ReactDOM.createRoot(container1).render(<App1 />);
+
+      const container2 = document.querySelector('.js-container2');
+      ReactDOM.createRoot(container2).render(<App2 />);
+    </script>
   </body>
 </html>

@@ -13,6 +13,8 @@
 
     <div class="js-container3"></div>
 
+    <div class="js-container4"></div>
+
     <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
@@ -120,6 +122,50 @@
         );
       }
 
+      function App4() {
+        const [count, setCount] = React.useState(0);
+        const buttonRef = React.useRef();
+
+        function increaseCount() {
+          setCount(count + 1);
+        }
+
+        function resetCount() {
+          setCount(0);
+        }
+
+        function autoClick() {
+          setInterval(() => {
+            const buttonElem = buttonRef.current;
+            if (buttonElem) {
+              buttonElem.click();
+            }
+          }, 1000);
+        }
+
+        return (
+          <>
+            <h2>Simple Counter App</h2>
+            <div className="counter-container">
+              <button
+                onClick={increaseCount}
+                ref={buttonRef}
+                className="counter-button"
+              >
+                Clicked {count} {count === 1 ? 'time' : 'times'}
+              </button>
+              <button onClick={resetCount} className="counter-button">
+
+                Reset
+              </button>
+              <button onClick={autoClick} className="counter-button">
+                Auto Click 
+              </button>
+            </div>
+          </>
+        );
+      }
+
       const container1 = document.querySelector('.js-container1');
       ReactDOM.createRoot(container1).render(<App1 />);
 
@@ -128,6 +174,9 @@
 
       const container3 = document.querySelector('.js-container3');
       ReactDOM.createRoot(container3).render(<App3 />);
+
+      const container4 = document.querySelector('.js-container4');
+      ReactDOM.createRoot(container4).render(<App4 />);
     </script>
   </body>
 </html>
